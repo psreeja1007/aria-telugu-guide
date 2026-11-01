@@ -1,26 +1,117 @@
 @import "tailwindcss";
 
+/* Aria palette: warm off-white, deep indigo, turmeric accent. Dark mode swaps the tokens. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --bg: #fbf8f3;
+  --card: #ffffff;
+  --ink: #23224f;
+  --muted: #5d5b7d;
+  --line: #e7e1d6;
+  --primary: #2b2a6b;
+  --primary-ink: #ffffff;
+  --accent: #e9a23b;
+  --accent-soft: #fbecd2;
+  --user: #2b2a6b;
+  --user-ink: #ffffff;
+  --warn-bg: #fff4e0;
+  --warn-ink: #7a4a00;
+  --digital: #e3f2e8;
+  --digital-ink: #1f6b3a;
+  --genz: #fbe4ef;
+  --genz-ink: #9a2860;
+  --language: #dff1f2;
+  --language-ink: #1d6870;
+  --news: #fbefd9;
+  --news-ink: #87570d;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #14132b;
+    --card: #1e1d3d;
+    --ink: #f2f0ff;
+    --muted: #b5b2d6;
+    --line: #2f2d57;
+    --primary: #e9a23b;
+    --primary-ink: #1a1400;
+    --accent: #e9a23b;
+    --accent-soft: #3a2e17;
+    --user: #3a3880;
+    --user-ink: #ffffff;
+    --warn-bg: #3a2b10;
+    --warn-ink: #ffd99a;
+    --digital: #1d3a29;
+    --digital-ink: #a9e5bf;
+    --genz: #3d1f30;
+    --genz-ink: #f5b5d4;
+    --language: #183739;
+    --language-ink: #a4dfe3;
+    --news: #3a2d14;
+    --news-ink: #f3d39a;
+    color-scheme: dark;
   }
 }
 
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-user: var(--user);
+  --color-user-ink: var(--user-ink);
+  --color-warn-bg: var(--warn-bg);
+  --color-warn-ink: var(--warn-ink);
+  --font-sans: var(--font-telugu), var(--font-latin), "Noto Sans Telugu", "Nirmala UI", "Gautami", system-ui, sans-serif;
+}
+
+/* Text size setting scales everything (Tailwind uses rem). */
+html {
+  font-size: 17px;
+}
+html[data-size="large"] {
+  font-size: 20px;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.topic-digital { background: var(--digital); color: var(--digital-ink); }
+.topic-genz { background: var(--genz); color: var(--genz-ink); }
+.topic-language { background: var(--language); color: var(--language-ink); }
+.topic-news { background: var(--news); color: var(--news-ink); }
+
+/* Aria's avatar breathes while she listens or speaks. */
+@keyframes aria-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+  50% { box-shadow: 0 0 0 14px color-mix(in srgb, var(--accent) 0%, transparent); }
+}
+.pulse { animation: aria-pulse 1.6s ease-in-out infinite; }
+
+@keyframes dots {
+  0%, 20% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+.dot { animation: dots 1.2s infinite; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse, .dot { animation: none; }
 }

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="g" cx="0.3" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#ffd98e"/>
+      <stop offset="0.6" stop-color="#e9a23b"/>
+      <stop offset="1" stop-color="#d27f1a"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="32" fill="url(#g)"/>
+  <text x="32" y="44" text-anchor="middle" font-family="Noto Sans Telugu, Nirmala UI, Gautami, sans-serif" font-size="34" font-weight="700" fill="#2b2a6b">ఆ</text>
+</svg>
